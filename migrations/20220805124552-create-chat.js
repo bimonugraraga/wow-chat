@@ -26,11 +26,7 @@ module.exports = {
         }
       },
       reply_to: {
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'Chats',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
