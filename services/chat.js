@@ -118,7 +118,15 @@ class ChatService {
             sender:params.id,
             receiver: allChatSender[i].receiver
           },
-          include: ["sender_data", "receiver_data"],
+          include: [{
+            model: User,
+            as: "sender_data",
+            attributes: {exclude: ['password']},
+          }, {
+            model: User,
+            as: "receiver_data",
+            attributes: {exclude: ['password']},
+          }],
           order: [['id', 'DESC']],
           limit: 1
         })
@@ -130,7 +138,15 @@ class ChatService {
             receiver:params.id,
             sender: allChatReceiver[i].sender
           },
-          include: ["sender_data", "receiver_data"],
+          include: [{
+            model: User,
+            as: "sender_data",
+            attributes: {exclude: ['password']},
+          }, {
+            model: User,
+            as: "receiver_data",
+            attributes: {exclude: ['password']},
+          }],
           order: [['id', 'DESC']],
           limit: 1
         })
