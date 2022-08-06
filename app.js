@@ -14,6 +14,8 @@ app.use(params.expressMiddleware())
 app.use("/", routes)
 app.use(err)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`)
+// })
+
+module.exports = app

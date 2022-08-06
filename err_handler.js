@@ -26,7 +26,12 @@ async function errHandle (err, req, res, next) {
       status: 400,
       message: err.message
     })
-  } else {
+  } else if (err.name === 'JsonWebTokenError'){
+    res.status(401).json({
+      status: 401,
+      message: "Invalid Token"
+    })
+  } else{
     res.status(500).json({
       status: 500,
       message: 'Internal Server Error',

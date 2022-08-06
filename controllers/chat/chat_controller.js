@@ -26,7 +26,9 @@ class ChatController {
         username: req.User.username
       }
       let messages = await ChatService.GetChat(params, next)
-      res.status(200).json(messages)
+      if (messages){
+        res.status(200).json(messages)
+      }
     } catch (error) {
       next(error)
     }
@@ -35,7 +37,9 @@ class ChatController {
   static async GetInvolved (req, res, next){
     try {
       let lastChat = await ChatService.LastChat(req.User, next)
-      res.status(200).json(lastChat)
+      if (lastChat){
+        res.status(200).json(lastChat)
+      }
     } catch (error) {
       next(error)
     }
